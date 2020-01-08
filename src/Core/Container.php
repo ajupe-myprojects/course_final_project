@@ -5,7 +5,8 @@ namespace App\Core;
 use PDO;
 use Exception;
 use PDOException;
-
+use App\Element\ElementController;
+use App\Element\ElementRepository;
 
 class Container
 {
@@ -24,8 +25,17 @@ class Container
                     die;
                     //exception funktionalität ist noch ausbaufähig ;)
                 }
+                $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+                return $pdo;
             },
+            'elementController' => function(){
 
+                return new ElementController($this->create('elementRepository'));
+            },
+            'elementRepository' => function(){
+
+                return new ElementRepository($this->create('pdo'));
+            },
         ];
     }
 

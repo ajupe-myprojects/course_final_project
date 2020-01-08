@@ -18,4 +18,12 @@ abstract class AbstractRepository
     abstract public function getModelName();
 
 
+    function fetchAllElements()
+    {
+        $model = $this->getModelName();
+        $table = $this->getTableName();
+        $qry = $this->pdo->query("SELECT * FROM `$table` JOIN `users` ON users.uid = elements.user_uid GROUP BY $table.id");
+        $books = $qry->fetchAll(PDO::FETCH_CLASS, $model);
+        return $books;
+    }
 }
