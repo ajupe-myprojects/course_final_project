@@ -1,0 +1,25 @@
+/* ### Boilerplate ### */
+/* Start Reset */
+*,*:after,*:before{
+    box-sizing: content-box;
+    padding: 0;
+    margin: 0;
+}
+/* Import Google font */
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+
+/* Basic HTML */
+html{
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #242424;
+}
+
+/* basic structure */
+
+.wrapper{
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
