@@ -6,12 +6,12 @@
     margin: 0;
 }
 /* Import Google font */
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
 
 
 /* Basic HTML */
 html{
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-family: 'Fira Sans', Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: #eef0f2;
     background-color: #191919;

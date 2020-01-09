@@ -1,6 +1,6 @@
 <main class="content-main mbott-30">
     <section class="welcome-container clear">
-        <div class="content-left t-center light-grey">
+        <div class="content-left t-center black">
             <h2>SciFi and Fantasy book Emporium</h2>
             <p>Zur Bücherliste geht es <a href="#">hier</a></p>
         </div>
@@ -14,8 +14,6 @@
                 <li>Stuff5</li>
             </ul>
             <div class="sell-out">
-                BUY MOAR STUFF!!!
-                <br>
                 Werbung
             </div>
 

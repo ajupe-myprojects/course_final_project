@@ -50,7 +50,7 @@
 }
 
 .active a,.active a:hover,.active a:focus{
-    color: #eef0f2 ;
+    color: #117470 ;
     background-color: #092327;
     text-decoration: underline;
 }
@@ -90,7 +90,10 @@
     min-height: 50px;
     width: 100%;
 }
-
+.sell-out{
+    height:253px;
+    background: url('../img/ui/anzeige_fake.jpg') no-repeat top left;
+}
 
 /* footer */
 footer{
@@ -98,15 +101,16 @@ footer{
     width: 93%;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 15px;
+    padding-top: 5px;
+    border-top: 2px solid #3f3f3f;
 }
 
 .foot-nav{
-
     width: 36%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .foot-nav li{
@@ -125,4 +129,10 @@ footer{
 .foot-nav a:hover{
     background-color: #191919;
     color: #f15025;
+}
+.stuff{
+    min-height: 50px;
+    background-color: #092327;
+    
+    border-top: 2px solid #117470;
 }
