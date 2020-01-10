@@ -62,7 +62,7 @@
 .content-main h3{
     padding-top:12px;
 }
- .welcome-container{
+ .welcome-container,.list-container{
     width: 95%;
     margin-left: auto;
     margin-right: auto;
@@ -93,6 +93,95 @@
 .sell-out{
     height:253px;
     background: url('../img/ui/anzeige_fake.jpg') no-repeat top left;
+}
+
+/* main book list */
+
+.sort-bar{
+    width: 100%;
+    color: #191919;
+    height: 28px;
+    margin-top:15px;
+    text-align: left;
+    border-top: 2px solid #117470;
+    border-bottom: 2px solid #117470;
+}
+.sort-bar p{
+    float:left;
+    line-height: 28px;
+}
+.sort-bar button{
+    float:right;
+    height:24px;
+    border: none;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: #117470;
+    color: #eef0f2;
+    border-radius: 2px;
+    font-weight: bold;
+}
+.sort-bar button:hover{
+    background-color: #191919;
+    color: #f15025;
+    
+}
+
+.book-prev{
+    width:100%;
+}
+
+.book-prev li{
+    margin-top: 10px;
+    border-bottom: 1px solid #f15025;
+    border-top: 1px solid #f15025;
+    background-color: #092327;
+}
+.book-prev li:after{
+    content: "";
+    display:table;
+    clear:both;
+}
+.book-prev li a{
+    display: block;
+    width: 62%;
+    height: 113px;
+    position: absolute;
+    left: auto;
+    z-index: 10;
+}
+.book-prev li a:hover{
+    background-color: #19a8a440;
+}
+
+.book-prev li img{
+    float: left;
+}
+
+.book-prev li div{
+    float: left;
+    margin-left: 10px;
+    text-align: left;
+}
+.book-data{
+    clear:both;
+    float:left;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+.book-data span{
+    display:block;
+}
+.book-userdate{
+    font-style: italic;
+    color: #117470;
+}
+.book-description{
+    margin-top: 10px;
+    float:left;
+    margin-left: 15px;
+    width: 50%;
+    text-align: left;
 }
 
 /* footer */

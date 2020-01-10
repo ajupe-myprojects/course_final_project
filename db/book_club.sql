@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 08. Jan 2020 um 16:07
+-- Erstellungszeit: 10. Jan 2020 um 21:41
 -- Server-Version: 10.4.11-MariaDB
 -- PHP-Version: 7.4.1
 
@@ -54,6 +54,7 @@ CREATE TABLE `elements` (
   `element_created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `element_changed_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `element_pic` varchar(255) NOT NULL,
+  `element_thumb` varchar(255) NOT NULL,
   `user_uid` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -61,8 +62,8 @@ CREATE TABLE `elements` (
 -- Daten für Tabelle `elements`
 --
 
-INSERT INTO `elements` (`id`, `element_title`, `element_author`, `element_isbn`, `element_genre`, `element_description`, `element_created_at`, `element_changed_at`, `element_pic`, `user_uid`) VALUES
-(1, 'Die Wasserstoff Sonate', 'Iain Banks', 'ISBN-13: 978-3453315464', 'Science Fiction', 'Zurück zu den Anfängen der Kultur\r\n\r\nDie ferne Zukunft: Die Menschheit hat sich in den letzten zehntausend Jahren in der Galaxis ausgebreitet. Künstliche Intelligenzen, denkende Raumschiffe und Mensch-Maschine-Wesen sind nun der Alltag in der sogenannten KULTUR. Doch wie hat all das einmal angefangen? Als die herrschende Elite einer alten Zivilisation komplett ausgelöscht wird, wird schnell eine Verdächtige präsentiert – doch Lieutenant Vyr Cossont ist unschuldig. Sie macht sich auf die Suche nach den Tätern und gerät in eine Verschwörung, die Tausende Jahre zurückreicht, bis in die Anfänge der KULTUR …', '2020-01-08 11:10:49', '2020-01-08 11:10:49', '/img/uploads/large/iain_banks_hydrogen_l.jpg', 1);
+INSERT INTO `elements` (`id`, `element_title`, `element_author`, `element_isbn`, `element_genre`, `element_description`, `element_created_at`, `element_changed_at`, `element_pic`, `element_thumb`, `user_uid`) VALUES
+(1, 'Die Wasserstoff Sonate', 'Iain Banks', 'ISBN-13: 978-3453315464', 'Science Fiction', 'Zurück zu den Anfängen der Kultur\r\n\r\nDie ferne Zukunft: Die Menschheit hat sich in den letzten zehntausend Jahren in der Galaxis ausgebreitet. Künstliche Intelligenzen, denkende Raumschiffe und Mensch-Maschine-Wesen sind nun der Alltag in der sogenannten KULTUR. Doch wie hat all das einmal angefangen? Als die herrschende Elite einer alten Zivilisation komplett ausgelöscht wird, wird schnell eine Verdächtige präsentiert – doch Lieutenant Vyr Cossont ist unschuldig. Sie macht sich auf die Suche nach den Tätern und gerät in eine Verschwörung, die Tausende Jahre zurückreicht, bis in die Anfänge der KULTUR …', '2020-01-08 11:10:49', '2020-01-08 11:10:49', 'img/uploads/large/iain_banks_hydrogen_l.jpg', 'img/uploads/small/iain_banks_hydrogen_s.jpg', 1);
 
 -- --------------------------------------------------------
 
