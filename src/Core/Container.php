@@ -7,6 +7,8 @@ use Exception;
 use PDOException;
 use App\Element\ElementController;
 use App\Element\ElementRepository;
+use App\Reviews\ReviewRepository;
+use App\Comments\CommentRepository;
 
 class Container
 {
@@ -30,11 +32,19 @@ class Container
             },
             'elementController' => function(){
 
-                return new ElementController($this->create('elementRepository'));
+                return new ElementController($this->create('elementRepository'), $this->create('reviewRepository'), $this->create('commentRepository'));
             },
             'elementRepository' => function(){
 
                 return new ElementRepository($this->create('pdo'));
+            },
+            'reviewRepository' => function(){
+
+                return new ReviewRepository($this->create('pdo'));
+            },
+            'commentRepository' => function(){
+
+                return new CommentRepository($this->create('pdo'));
             },
         ];
     }

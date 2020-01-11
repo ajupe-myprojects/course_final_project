@@ -3,7 +3,7 @@
 namespace App\Element;
 
 use App\Core\AbstractRepository;
-
+use PDO;
 
 class ElementRepository extends AbstractRepository
 {
@@ -17,4 +17,14 @@ class ElementRepository extends AbstractRepository
         return 'App\\Element\\ElementModel';
     }
     
+    public function fetchSingleBook($id)
+    {
+        $model = $this->getModelName();
+        $table = $this->getTableName();
+        $qry = $this->pdo->prepare("SELECT * FROM `$table` JOIN `users` ON users.uid = $table.id WHERE $table.id = ?");
+        $qry->execute([$id]);
+        $qry->setFetchMode(PDO::FETCH_CLASS, $model);
+        $book_single = $qry->fetch(PDO::FETCH_CLASS);
+        return $book_single;
+    }
 }

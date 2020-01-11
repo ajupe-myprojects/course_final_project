@@ -112,6 +112,14 @@ li>a{
     margin-left: auto;
     margin-right: auto;
 }
+.formfield-buttons{
+    text-align: center;
+    width: 70%;
+    padding: 15px;
+    background-color: #092327;
+    margin-left: auto;
+    margin-right: auto;
+}
 .formfield label{
     display:block;
     min-width: 110px;
@@ -120,7 +128,7 @@ li>a{
     margin-bottom: 10px;
     font-weight: bold;
 }
-.formfield input[type=text]{
+.formfield input[type=text],.formfield input[type=email],.formfield input[type=password]{
     border: none;
     border-radius: 4px;
     height: 26px;
@@ -128,6 +136,13 @@ li>a{
     background-color: #c6c7c4;
     font-size: 16px;
     font-weight: bold;
+}
+.formfield input[type=file]{
+    background-color: #c6c7c4;
+    color: #191919;
+    border: none;
+    font-weight: bold;
+    border-radius: 3px;
 }
 
 .formfield select{
@@ -143,6 +158,19 @@ li>a{
     padding: 4px;
 }
 
+.form-button{
+    width: 15%;
+    height:28px;
+    background-color: #f15025;
+    color: #191919;
+    border: none;
+    font-weight: bold;
+    border-radius: 3px;
+}
+.form-button:hover{
+    background-color: #1f7986;
+    box-shadow: 2px 2px 4px #000000;
+}
 input[type=text].error{
     background: #f8b4ae;
     border:1px solid #f81e0a;

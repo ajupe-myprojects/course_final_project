@@ -1,5 +1,5 @@
 <main class="content-main">
-    <section class="list-container clear">
+    <div class="list-container clear">
         <div class="content-left t-center black">
             <h2>Bücherliste</h2>
             <div class="sort-bar orange clear">
@@ -12,17 +12,17 @@
                     <img src="/<?= $book->element_thumb ?>" alt="Einbandbild">
                     <div class="clear">
                         <div class="book-title">
-                            <h3><?= $book->element_title ?></h3>
-                            <h4><?= $book->element_author ?></h4>
+                            <h3><?= e($book->element_title) ?></h3>
+                            <h4><?= e($book->element_author) ?></h4>
                         </div>
                         <p class="book-data">
                             <span class="book-genre"><?= $book->element_genre ?></span>
-                            <span class="book-isbn"><?= $book->element_isbn ?></span>
+                            <span class="book-isbn">ISBN-13 : <?= $book->element_isbn ?></span>
                             <span class="book-userdate">Erstellt : <?= fixDate($book->element_created_at) ?> von : <?= $book->username ?></span>
                         </p>
                     </div>
-                    <p class="book-description"><?= substr($book->element_description, 0, 220) . '<span class="remark">...mehr</span>' ?></p>
-                    <a href="#"></a>
+                    <p class="book-description"><?= e(substr($book->element_description, 0, 220)) . '<span class="remark">...mehr</span>' ?></p>
+                    <a href="./book-single?id=<?= $book->id?>"></a>
                 </li>
             <?php endforeach; ?>
             </ul>
@@ -41,28 +41,31 @@
                     </div>
                     <div class="formfield">
                         <label for="isbn-number">ISBN Nummer (ISBN-13): <span class="ital-red">*</span></label>
-                        <input type="text" name="isbn-number" id="isbn-number" class="" required>
+                        <input type="text" name="isbn-number" id="isbn-number" class="" required placeholder="000-000000000">
                     </div>
                     <div class="formfield">
                         <label for="genre">Bitte wählen sie das Genre aus: <span class="ital-red">*</span></label>
                         <select name="genre" id="genre" required>
                             <option disabled selected value="">---</option>
                             <optgroup>
-                                    <option>Science Fiction</option>
-                                    <option>Fantasy</option>
-                                    <option>Misc</option>
+                                <option>Science Fiction</option>
+                                <option>Fantasy</option>
+                                <option>Misc</option>
                             </optgroup>
                         </select>
-                    </div>
-                    <div class="formfield">
-                        <label for="description">Kurzbeschreibung des Buches: <span class="ital-red">*</span></label>
-                        <textarea name="description" id="" cols="30" rows="10"></textarea>
                     </div>
                     <div class="formfield">
                         <label for="upload-pic">Bild vom Bucheinband hochladen (optional):</label>
                         <input type="file" name="upload-pic" id="upload-pic">
                     </div>
-                    <input type="submit" value="Submit">
+                    <div class="formfield">
+                        <label for="description">Kurzbeschreibung des Buches: <span class="ital-red">*</span></label>
+                        <textarea name="description" id="" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="formfield-buttons">
+                        <input type="submit" value="Absenden" class="form-button">
+                        <button class="form-button">Abbruch</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -80,5 +83,5 @@
             </div>
 
         </div>
-    </section>
+    </div>
 </main>

@@ -48,6 +48,10 @@ $routes = [
     '/start' => [
         'controller' => 'elementController',
         'method' => 'index'
+    ],
+    '/book-single' => [
+        'controller' => 'elementController',
+        'method' => 'fetchBook'
     ]
 ];
 
