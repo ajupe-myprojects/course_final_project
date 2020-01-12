@@ -21,7 +21,7 @@ class ElementRepository extends AbstractRepository
     {
         $model = $this->getModelName();
         $table = $this->getTableName();
-        $qry = $this->pdo->prepare("SELECT * FROM `$table` JOIN `users` ON users.uid = $table.id WHERE $table.id = ?");
+        $qry = $this->pdo->prepare("SELECT * FROM `$table` JOIN `users` ON users.uid = $table.user_uid WHERE $table.id = ?");
         $qry->execute([$id]);
         $qry->setFetchMode(PDO::FETCH_CLASS, $model);
         $book_single = $qry->fetch(PDO::FETCH_CLASS);
