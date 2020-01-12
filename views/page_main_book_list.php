@@ -4,29 +4,11 @@
             <h2>Bücherliste</h2>
             <div class="sort-bar orange clear">
                 <p>Sort by: <a href="#">Name</a></p>
-                <button>Neues Buch einfügen</button>
+                <?php if(!empty($_SESSION['login'])) :?>
+                    <button>Neues Buch einfügen</button>
+                <?php endif; ?>
             </div>
-            <ul class="book-prev">
-            <?php foreach($booklist as $book) :?>
-                <li>
-                    <img src="/<?= $book->element_thumb ?>" alt="Einbandbild">
-                    <div class="clear">
-                        <div class="book-title">
-                            <h3><?= e($book->element_title) ?></h3>
-                            <h4><?= e($book->element_author) ?></h4>
-                        </div>
-                        <p class="book-data">
-                            <span class="book-genre"><?= $book->element_genre ?></span>
-                            <span class="book-isbn">ISBN-13 : <?= $book->element_isbn ?></span>
-                            <span class="book-userdate">Erstellt : <?= fixDate($book->element_created_at) ?> von : <?= $book->username ?></span>
-                        </p>
-                    </div>
-                    <p class="book-description"><?= e(substr($book->element_description, 0, 220)) . '<span class="remark">...mehr</span>' ?></p>
-                    <a href="./book-single?id=<?= $book->id?>"></a>
-                </li>
-            <?php endforeach; ?>
-            </ul>
-            <div class="form-container">
+            <div class="form-container hide" id="new-book-form">
                 <div class="formfield">
                     <h3 class="t-center orange-text">Neues Buch einfügen:</h3>
                 </div>
@@ -64,10 +46,31 @@
                     </div>
                     <div class="formfield-buttons">
                         <input type="submit" value="Absenden" class="form-button">
-                        <button class="form-button">Abbruch</button>
+                        <button class="form-button">Schließen</button>
                     </div>
                 </form>
             </div>
+            <ul class="book-prev">
+            <?php foreach($booklist as $book) :?>
+                <li>
+                    <img src="/<?= $book->element_thumb ?>" alt="Einbandbild">
+                    <div class="clear">
+                        <div class="book-title">
+                            <h3><?= e($book->element_title) ?></h3>
+                            <h4><?= e($book->element_author) ?></h4>
+                        </div>
+                        <p class="book-data">
+                            <span class="book-genre"><?= $book->element_genre ?></span>
+                            <span class="book-isbn">ISBN-13 : <?= $book->element_isbn ?></span>
+                            <span class="book-userdate">Erstellt : <?= fixDate($book->element_created_at) ?> von : <?= $book->username ?></span>
+                        </p>
+                    </div>
+                    <p class="book-description"><?= e(substr($book->element_description, 0, 220)) . '<span class="remark">...mehr</span>' ?></p>
+                    <a href="./book-single?id=<?= $book->id?>"></a>
+                </li>
+            <?php endforeach; ?>
+            </ul>
+
         </div>
         <div class="content-right t-center black white-text">
             <h3 class="mbott-60">Community / News</h3>

@@ -14,6 +14,8 @@ if (isset($routes[$path_info])) {
     $controller->$method();
 }else if($path_info === '/login'){
     include_once __DIR__.'/views/page_main_login.php';
+}else if($path_info === '/user-info'){
+    include_once __DIR__.'/views/page_main_user_info.php';
 }else{
     include_once __DIR__."/views/page_main_welcome.php";
 }

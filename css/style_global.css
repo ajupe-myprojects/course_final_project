@@ -56,12 +56,20 @@ li>a{
 .t-center{
     text-align: center;
 }
-
+.t-left{
+    text-align: left;
+}
+.mtop-15{
+    margin-top: 15px;
+}
 .mtop-30{
     margin-top: 30px;
 }
 .mtop-60{
     margin-top: 60px;
+}
+.mbott-15{
+    margin-bottom: 15px;
 }
 .mbott-30{
     margin-bottom: 30px;
@@ -103,7 +111,18 @@ li>a{
 
 /* forms */
 
-
+.form-sidebox{
+    width:18%;
+    height: 190px;
+    position: absolute;
+    left:auto;
+    background-color: #c6c7c4;
+    color: #191919;
+    margin-top: -210px;
+    margin-left: 32%;
+    border-radius: 6px;
+    padding: 5px;
+}
 .formfield{
     text-align: left;
     width: 70%;
@@ -111,6 +130,15 @@ li>a{
     background-color: #092327;
     margin-left: auto;
     margin-right: auto;
+}
+.formfield-center{
+    text-align: center;
+    width: 70%;
+    padding: 15px;
+    background-color: #092327;
+    margin-left: auto;
+    margin-right: auto;
+    border-top:1px solid #f81e0a;
 }
 .formfield-buttons{
     text-align: center;
@@ -157,9 +185,12 @@ li>a{
     background-color: #c6c7c4;
     padding: 4px;
 }
-
+.formfield-center p{
+    font-weight: bold;
+    padding:10px;
+}
 .form-button{
-    width: 15%;
+    min-width: 120px;
     height:28px;
     background-color: #f15025;
     color: #191919;
@@ -170,10 +201,11 @@ li>a{
 .form-button:hover{
     background-color: #1f7986;
     box-shadow: 2px 2px 4px #000000;
+    color: #c6c7c4;
 }
-input[type=text].error{
-    background: #f8b4ae;
-    border:1px solid #f81e0a;
+input[type=text].error,input[type=email].error,input[type=password].error{
+    color:#f81e0a;
+    border:2px solid #f81e0a;
 }
 input[type=text].success{
     background: #d1f7b8;

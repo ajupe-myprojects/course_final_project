@@ -4,7 +4,7 @@
 
 require __DIR__.'/autoload.php';
 //session_set_cookie_params(4000);
-//if(session_status() === PHP_SESSION_NONE) session_start();
+if(session_status() === PHP_SESSION_NONE) session_start();
 
 //+++++++++++++++++++ Global Functions +++++++++++++++++++++++//
 
@@ -52,6 +52,14 @@ $routes = [
     '/book-single' => [
         'controller' => 'elementController',
         'method' => 'fetchBook'
+    ],
+    '/login-user' => [
+        'controller' => 'loginController',
+        'method' => 'loginUser'
+    ],
+    '/logout' => [
+        'controller' => 'loginController',
+        'method' => 'logout'
     ]
 ];
 

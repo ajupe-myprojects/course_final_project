@@ -9,6 +9,8 @@ use App\Element\ElementController;
 use App\Element\ElementRepository;
 use App\Reviews\ReviewRepository;
 use App\Comments\CommentRepository;
+use App\User\LoginController;
+use App\User\UserRepository;
 
 class Container
 {
@@ -46,6 +48,14 @@ class Container
 
                 return new CommentRepository($this->create('pdo'));
             },
+            'loginController' => function(){
+
+                return new LoginController($this->create('userRepository'));
+            },
+            'userRepository' => function(){
+
+                return new UserRepository($this->create('pdo'));
+            }
         ];
     }
 
