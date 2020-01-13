@@ -3,11 +3,17 @@
         <div class="content-left t-center black">
             <div class="formfield-center">
                 <p class="orange-text"><?= $message['msg'] ?></p>
+                <?php if(isset($message['content'])) :?>
+                    <p class="white-text t-left"><?= $message['content'] ?></p>
+                <?php endif; ?>
                 <?php if($message['state'] === 'wrong') :?>
                     <button class="form-button">Zum Login</button>
                 <?php endif; ?>
-                <?php if($message['state'] === 'clear') :?>
+                <?php if($message['state'] === 'clear' || $message['state'] === 'cont-success') :?>
                     <button class="form-button">Zur Liste</button>
+                <?php endif; ?>
+                <?php if($message['state'] === 'cont-error') :?>
+                    <button class="form-button">Kontakt-Form</button>
                 <?php endif; ?>
             </div>
         </div>

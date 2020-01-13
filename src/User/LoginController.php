@@ -4,6 +4,7 @@ namespace App\User;
 
 use App\Core\AbstractController;
 use App\Helper\FormHelper;
+use App\Helper\Mailer;
 use App\Helper\Validator;
 
 class LoginController extends AbstractController
@@ -45,5 +46,25 @@ class LoginController extends AbstractController
     {
         unset($_SESSION['login']);
         header('Location: start');
+    }
+
+    //non user login related
+
+    public function contactMail()
+    {
+        $message = [];
+        $mail = new Mailer();
+        $msgs = $mail->sendAdminMail();
+        if(!isset($msgs['error'])){
+            $message['msg'] = 'Ihre Kontaktanfrage wurde erfolgreich versendet!';
+            $message['content'] = 'Ihre übermittelten Daten: <br>Vorname : '.$msgs['name'].'<br>Nachname : '.$msgs['sname'].'<br>Email : '.$msgs['mail'];
+            $message['state'] = 'cont-success';
+            $this->render('page_main_login_error', ['message' => $message]);
+        }else{
+            $message['msg'] = 'Bei der Übermittlung ihrer Anfrage sind Fehler aufgetreten!<br>Bitte versuchen sie es erneut!';
+            $message['state'] = 'cont-err';
+            $this->render('page_main_login_error', ['message' => $message]);
+        }
+
     }
 }

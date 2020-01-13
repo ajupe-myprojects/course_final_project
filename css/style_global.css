@@ -77,6 +77,9 @@ li>a{
 .mbott-60{
     margin-bottom: 60px;
 }
+.pd-10{
+    padding: 10px;
+}
 
 /* basic colors */
 /* main contrast */
@@ -203,7 +206,7 @@ li>a{
     box-shadow: 2px 2px 4px #000000;
     color: #c6c7c4;
 }
-input[type=text].error,input[type=email].error,input[type=password].error{
+input[type=text].error,input[type=email].error,input[type=password].error,textarea.error{
     color:#f81e0a;
     border:2px solid #f81e0a;
 }

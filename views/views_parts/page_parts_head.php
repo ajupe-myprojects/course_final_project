@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../css/style_pages.css">
     <script src="../../js/global_helpers.js"></script>
     <script src="../../js/login_helpers.js"></script>
+    <script src="../../js/contact_helpers.js"></script>
 </head>
 <body>
     <div class="wrapper"><!-- start wrap -->

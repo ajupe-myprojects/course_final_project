@@ -54,6 +54,7 @@
     background-color: #092327;
     text-decoration: underline;
 }
+
 /* main welcome */
 .content-main{
     margin-top:42px;
@@ -335,6 +336,12 @@ footer{
 .foot-nav a:hover{
     background-color: #191919;
     color: #f15025;
+}
+.sub-active a,.sub-active a:hover,.sub-active a:focus{
+    color: #eef0f2;
+    background-color: #f15025;
+    text-decoration: underline;
+    outline:none;
 }
 .stuff{
     min-height: 50px;

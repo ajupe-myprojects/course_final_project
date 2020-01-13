@@ -25,4 +25,15 @@ class Validator
             return '!ERROR!';
         }
     }
+
+    public function checkOpt($strg)
+    {
+        $forms = new FormHelper();
+        $requests = $forms->getRequests();
+        if(isset($requests[$strg]) && !empty($requests[$strg])){
+            return $requests[$strg];
+        }else{
+            return 'No optional content';
+        }
+    }
 }

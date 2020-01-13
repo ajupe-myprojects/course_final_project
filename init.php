@@ -42,7 +42,7 @@ function saveImages(string $path)
     imagedestroy($image);
 }
 
-//+++++++++++++++++++ Routing Table +++++++++++++++++++++++//
+//+++++++++++++++++++ Routing Tables +++++++++++++++++++++++//
 
 $routes = [
     '/start' => [
@@ -60,7 +60,19 @@ $routes = [
     '/logout' => [
         'controller' => 'loginController',
         'method' => 'logout'
+    ],
+    '/make-contact' => [
+        'controller' => 'loginController',
+        'method' => 'contactMail'
     ]
+];
+
+$links = [
+    '/login' => '/views/page_main_login.php',
+    '/user-info' => '/views/page_main_user_info.php',
+    '/impressum' => '/views/page_main_impressum.php',
+    '/daten' => '/views/page_main_daten.php',
+    '/contact' => '/views/page_main_contact.php'
 ];
 
 //Building the container for database access
