@@ -48,6 +48,25 @@ class LoginController extends AbstractController
         header('Location: start');
     }
 
+    public function signUpUser()
+    {
+        $message = [];
+        $mail = new Mailer();
+        $spmsg = $mail->sendSignupMail();
+        if(!isset($spmsg['error'])){
+            $this->userRepository->signInUser($spmsg['mail'], $spmsg['username'],$spmsg['password']);
+            $message['msg'] = 'Willkommen! <br>Eine Email mit ihrem Passwort wurde an ihre Adresse gesendet!';
+            $message['content'] = 'Ihre Daten: <br>Username : '.$spmsg['username'].'<br>Ihr generiertes Passwort : '.$spmsg['password'];
+            $message['state'] = 'sp-success';
+            $this->render('page_main_login_error', ['message' => $message]);
+            
+        }else{
+            $message['msg'] = 'Bei der Übermittlung ihrer Anfrage sind Fehler aufgetreten!<br>Bitte versuchen sie es erneut!';
+            $message['state'] = 'sp-err';
+            $this->render('page_main_login_error', ['message' => $message]);
+        }
+    }
+
     //non user login related
 
     public function contactMail()

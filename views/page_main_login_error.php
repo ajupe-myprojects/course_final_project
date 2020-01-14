@@ -6,7 +6,7 @@
                 <?php if(isset($message['content'])) :?>
                     <p class="white-text t-left"><?= $message['content'] ?></p>
                 <?php endif; ?>
-                <?php if($message['state'] === 'wrong') :?>
+                <?php if($message['state'] === 'wrong' || $message['state'] === 'sp-success' || $message['state'] === 'sp-err') :?>
                     <button class="form-button">Zum Login</button>
                 <?php endif; ?>
                 <?php if($message['state'] === 'clear' || $message['state'] === 'cont-success') :?>
@@ -15,6 +15,7 @@
                 <?php if($message['state'] === 'cont-error') :?>
                     <button class="form-button">Kontakt-Form</button>
                 <?php endif; ?>
+                
             </div>
         </div>
         <div class="content-right t-center black white-text">

@@ -64,6 +64,18 @@ $routes = [
     '/make-contact' => [
         'controller' => 'loginController',
         'method' => 'contactMail'
+    ],
+    '/signup' => [
+        'controller' => 'loginController',
+        'method' => 'signUpUser'
+    ],
+    '/add-review' => [
+        'controller' => 'elementController',
+        'method' => 'addReview'
+    ],
+    '/add-comment' => [
+        'controller' => 'elementController',
+        'method' => 'addComment'
     ]
 ];
 
@@ -72,7 +84,9 @@ $links = [
     '/user-info' => '/views/page_main_user_info.php',
     '/impressum' => '/views/page_main_impressum.php',
     '/daten' => '/views/page_main_daten.php',
-    '/contact' => '/views/page_main_contact.php'
+    '/contact' => '/views/page_main_contact.php',
+    '/signup-error' => '/views/page_main_login_error.php'
+
 ];
 
 //Building the container for database access

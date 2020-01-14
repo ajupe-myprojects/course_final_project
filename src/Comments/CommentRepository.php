@@ -27,4 +27,11 @@ class CommentRepository extends AbstractRepository
         $rev_comments = $qry->fetchAll(PDO::FETCH_CLASS, $model);
         return $rev_comments;
     }
+
+    public function addNewComment($title, $text, $ele_id, $rev_id, $user_id)
+    {
+        $table = $this->getTableName();
+        $qry = $this->pdo->prepare("INSERT INTO `$table` (`comment_title`, `comment_text`, `comment_rev_rid`, `comment_el_id`, `comment_user_uid`) VALUES (:title, :ctext, :revrid, :elid, :usid)");
+        $qry->execute(['title' => $title, 'ctext' => $text, 'revrid' => $rev_id, 'elid' => $ele_id, 'usid' => $user_id]);
+    }
 }

@@ -186,6 +186,22 @@
 }
 
 /* book review page */
+
+.hide-butt{
+    width:160px;
+    height:26px;
+    border:none;
+    font-weight: bold;
+    border-radius: 3px;
+    background-color: #f15025;
+    color:#191919;
+}
+.hide-butt:hover,.hide-butt:focus{
+    background-color: #0B5351;
+    color: #eef0f2;
+    box-shadow: 2px 2px 3px black;
+}
+
 .book-large{
     background-color: #092327;
     padding-bottom: 30px;;

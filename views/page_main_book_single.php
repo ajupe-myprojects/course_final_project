@@ -12,7 +12,32 @@
                         <span class="">ISBN-13 : <?= $book->element_isbn ?></span>
                         <span class="book-userdate">Erstellt : <?= fixDate($book->element_created_at) ?> von : <?= $book->username ?></span>
                     </p>
+                    <?php if(!empty($_SESSION['login'])) :?>
+                        <button class="hide-butt">Review schreiben</button>
+                    <?php endif; ?>
                 </section>
+                <?php if(!empty($_SESSION['login'])) :?>
+                    <div class="form-container mtop-15 hide" id="rev-book-form">
+                        <div class="formfield-center">
+                            <h4 class="orange-text">Review hinzufügen</h4>
+                        </div>
+                        <form action="./add-review" method="post" id="rev-add">
+                            <div class="formfield">
+                                <label for="review-title">Review-Titel: <span class="ital-red">*</span></label>
+                                <input type="text" name="review-title" id="review-title" class="" required>
+                            </div>
+                            <div class="formfield">
+                                <label for="review-text">Review Text: <span class="ital-red">*</span></label>
+                                <textarea name="review-text" cols="30" rows="10" id="review-text" required></textarea>
+                            </div>
+                            <input type="hidden" name="book-id" value="<?= $book->id ?>">
+                            <div class="formfield-buttons">
+                                <input type="submit" value="Absenden" class="form-button">
+                                <button class="form-button">Review abbrechen</button>
+                            </div>
+                        </form>
+                    </div>
+                <?php endif; ?>
                 <section class="book-reviews">
                     <h3>Reviews: </h3>
                     <?php foreach($book_rev as $rev) : ?>
@@ -23,6 +48,9 @@
                                 <span class="book-userdate"> von : <?= e($rev->username) ?></span>
                              </div>
                             <p class="clearfix"><?= e($rev->rev_text) ?></p>
+                            <?php if(!empty($_SESSION['login'])) :?>
+                                <button class="hide-butt mbott-15" data-rev-id="<?= $rev->rid ?>" data-el-id="<?= $book->id ?>">Kommentar schreiben</button>
+                            <?php endif; ?>
                             <div class="rev-comments">
                                 <header>Review-Kommentare:</header>
                                 <?php foreach($rev_comments as $comment) : ?>

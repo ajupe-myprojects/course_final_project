@@ -8,6 +8,7 @@
                     <button>Neues Buch einfügen</button>
                 <?php endif; ?>
             </div>
+            <?php if(!empty($_SESSION['login'])) :?>
             <div class="form-container hide" id="new-book-form">
                 <div class="formfield">
                     <h3 class="t-center orange-text">Neues Buch einfügen:</h3>
@@ -50,6 +51,7 @@
                     </div>
                 </form>
             </div>
+            <?php endif; ?>
             <ul class="book-prev">
             <?php foreach($booklist as $book) :?>
                 <li>

@@ -5,9 +5,6 @@ namespace App\Helper;
 
 class Mailer
 {
-
-
-
     private function generatePassword()
     {
         $alphabet = "0123456789abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
@@ -25,6 +22,32 @@ class Mailer
         return implode($pass);
     }
 
+    public function sendSignupMail()
+    {
+        $contents = [];
+        $val = new Validator();
+        $contents['mail'] = $val->checkMail('sp-email');
+        $contents['username'] = $val->checkText('sp-username');
+        $contents['password'] = $this->generatePassword();
+        $_POST = array();
+        if(!in_array('!ERROR!', $contents)){
+
+            $mail_body = [
+                'email' => $contents['mail'],
+                'subject' => 'Willkommen im Buchklub!',
+                'message' => 'Danke für die Registrierung im Buchklub! \n Ihr Benutzername ist : '.$contents['username'].'\n Ihr generiertes Passwort ist : '.$contents['password'],
+                'headers' => 'from: noreply@bookclub.to'
+            ];
+            mb_language('German');
+            mb_send_mail($mail_body['email'], $mail_body['subject'], $mail_body['message'], $mail_body['headers']);
+            return $contents;
+        }else{
+
+            $contents['error'] = 'Möööp';
+            return $contents;
+        }
+    }
+
     public function sendAdminMail()
     {
         $contents = [];
@@ -34,6 +57,7 @@ class Mailer
         $contents['sname'] = $val->checkText('ct-sname');
         $contents['number'] = $val->checkOpt('ct-tel');
         $contents['msg'] = $val->checkText('ct-message');
+        $_POST = array();
         if(!in_array('!ERROR!',$contents)){
 
             $mail_body = [
@@ -46,6 +70,7 @@ class Mailer
             mb_send_mail($mail_body['email'], $mail_body['subject'], $mail_body['message'], $mail_body['headers']);
             return $contents;
         }else{
+            
             $contents['error'] = 'Möööp';
             return $contents;
         }

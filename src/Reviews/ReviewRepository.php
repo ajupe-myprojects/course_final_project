@@ -26,4 +26,11 @@ class ReviewRepository extends AbstractRepository
         $book_reviews = $qry->fetchAll(PDO::FETCH_CLASS, $model);
         return $book_reviews;
     }
+
+    public function addNewRev($title, $text, $id, $user_id)
+    {
+        $table = $this->getTableName();
+        $qry = $this->pdo->prepare("INSERT INTO `$table` (`rev_title`, `rev_text`, `rev_element_id`, `rev_user_uid`) VALUES (:title, :rtext, :id, :usid)");
+        $qry->execute(['title' => $title, 'rtext' => $text, 'id' => $id, 'usid' => $user_id]);
+    }
 }

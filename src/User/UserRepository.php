@@ -28,4 +28,13 @@ class UserRepository extends AbstractRepository
         $user = $qry->fetch(PDO::FETCH_CLASS);
         return $user;  
     }
+
+    public function signInUser($mail, $username, $password)
+    {
+        $table = $this->getTableName();
+        $model = $this->getModelName();
+        $pass = password_hash($password, PASSWORD_DEFAULT);
+        $qry = $this->pdo->prepare("INSERT INTO `$table` (`email`, `username`, `password`, `user_role`) VALUES (:email, :username, :pw, :rol)");
+        $qry->execute(['email' => $mail, 'username' => $username, 'pw' => $pass, 'rol' => 1]);
+    }
 }
