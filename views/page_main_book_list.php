@@ -13,7 +13,7 @@
                 <div class="formfield">
                     <h3 class="t-center orange-text">Neues Buch einfügen:</h3>
                 </div>
-                <form action="#" method="post" enctype="multipart/form-data">
+                <form action="./new-book" method="post" enctype="multipart/form-data" id="new-book-form">
                     <div class="formfield">
                         <label for="booktitle">Buchtitel: <span class="ital-red">*</span></label>
                         <input type="text" name="booktitle" id="booktitle" class="" required>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="formfield">
                         <label for="description">Kurzbeschreibung des Buches: <span class="ital-red">*</span></label>
-                        <textarea name="description" id="" cols="30" rows="10"></textarea>
+                        <textarea name="description" cols="30" rows="10" id="description"></textarea>
                     </div>
                     <div class="formfield-buttons">
                         <input type="submit" value="Absenden" class="form-button">
@@ -55,7 +55,7 @@
             <ul class="book-prev">
             <?php foreach($booklist as $book) :?>
                 <li>
-                    <img src="/<?= $book->element_thumb ?>" alt="Einbandbild">
+                    <img src="/<?= $book->element_thumb === 'no image' ? 'img/uploads/small/dummy_pic_s.jpg' : $book->element_thumb ?>" alt="Einbandbild">
                     <div class="clear">
                         <div class="book-title">
                             <h3><?= e($book->element_title) ?></h3>

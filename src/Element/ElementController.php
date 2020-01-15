@@ -56,4 +56,19 @@ class ElementController extends AbstractController
         header('Location: book-single?id='.$ele_id);
     }
 
+    public function addElement()
+    {
+        $val = new Validator();
+        $title = $val->checkText('booktitle');
+        $author = $val->checkText('bookauthor');
+        $isbn = $val->checkISBN('isbn-number');
+        $genre = $val->checkText('genre');
+        $desc = $val->checkText('description');
+        $arr_img =$val->imgCheck('upload-pic');
+
+        $this->elementRepository->addNewElement($title, $author, $isbn, $genre, $desc, $arr_img);
+        header('Location: start');
+
+    }
+
 }

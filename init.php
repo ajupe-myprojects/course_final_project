@@ -17,7 +17,7 @@ function e( string $str) : string
 function fixDate($string)
 {
     $timestamp = strtotime($string);
-    return date('d-m-Y', $timestamp);
+    return date('d.m.Y', $timestamp);
 }
 
 function getImageFileName(string $path) : string
@@ -76,6 +76,10 @@ $routes = [
     '/add-comment' => [
         'controller' => 'elementController',
         'method' => 'addComment'
+    ],
+    '/new-book' => [
+        'controller' => 'elementController',
+        'method' => 'addElement'
     ]
 ];
 
