@@ -4,7 +4,7 @@
         ////definitions / objects / functions
         //forms
         var rev = document.getElementById('rev-add');
-        var book = document.getElementById('new-book-form');
+        var book = document.getElementById('new-element-form');
         
         //inputs
         var rv_title = document.getElementById('review-title');

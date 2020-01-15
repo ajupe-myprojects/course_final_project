@@ -51,17 +51,26 @@ class LoginController extends AbstractController
     public function signUpUser()
     {
         $message = [];
-        $mail = new Mailer();
-        $spmsg = $mail->sendSignupMail();
-        if(!isset($spmsg['error'])){
-            $this->userRepository->signInUser($spmsg['mail'], $spmsg['username'],$spmsg['password']);
-            $message['msg'] = 'Willkommen! <br>Eine Email mit ihrem Passwort wurde an ihre Adresse gesendet!';
-            $message['content'] = 'Ihre Daten: <br>Username : '.$spmsg['username'].'<br>Ihr generiertes Passwort : '.$spmsg['password'];
-            $message['state'] = 'sp-success';
-            $this->render('page_main_login_error', ['message' => $message]);
-            
+        $val = new Validator();
+        $email = $val->checkMail('sp-email');
+        $verify = $this->userRepository->verifyEmail($email);
+        if(empty($verify)){
+            $mail = new Mailer();
+            $spmsg = $mail->sendSignupMail();
+            if(!isset($spmsg['error'])){
+                $this->userRepository->signInUser($spmsg['mail'], $spmsg['username'],$spmsg['password']);
+                $message['msg'] = 'Willkommen! <br>Eine Email mit ihrem Passwort wurde an ihre Adresse gesendet!';
+                $message['content'] = 'Ihre Daten: <br>Username : '.$spmsg['username'].'<br>Ihr generiertes Passwort : '.$spmsg['password'];
+                $message['state'] = 'sp-success';
+                $this->render('page_main_login_error', ['message' => $message]);
+                
+            }else{
+                $message['msg'] = 'Bei der Übermittlung ihrer Anfrage sind Fehler aufgetreten!<br>Bitte versuchen sie es erneut!';
+                $message['state'] = 'sp-err';
+                $this->render('page_main_login_error', ['message' => $message]);
+            }
         }else{
-            $message['msg'] = 'Bei der Übermittlung ihrer Anfrage sind Fehler aufgetreten!<br>Bitte versuchen sie es erneut!';
+            $message['msg'] = 'Diese Email wird schon verwendet!<br>Bitte versuchen sie es mit einer anderen';
             $message['state'] = 'sp-err';
             $this->render('page_main_login_error', ['message' => $message]);
         }
@@ -85,5 +94,25 @@ class LoginController extends AbstractController
             $this->render('page_main_login_error', ['message' => $message]);
         }
 
+    }
+
+    public function regeneratePassword()
+    {
+        $message = [];
+        $val = new Validator();
+        $mail = $val->checkMail('rg-email');
+        $verify = $this->userRepository->verifyEmail($mail);
+        if(!empty($verify)){
+            $sendmail = new Mailer();
+            $pass = $sendmail->sendNewpass($mail);
+            $this->userRepository->changePass($mail,$pass);
+            $message['msg'] = 'Ihr Passwort wurde geändert. <b>Bitte überprüfen sie ihren Emailaccount!';
+            $message['state'] = 'cont-success';
+            $this->render('page_main_login_error', ['message' => $message]);
+        }else{
+            $message['msg'] = 'Bei der Übermittlung ihrer Anfrage sind Fehler aufgetreten!<br>Bitte versuchen sie es erneut!';
+            $message['state'] = 'cont-err';
+            $this->render('page_main_login_error', ['message' => $message]);
+        }
     }
 }

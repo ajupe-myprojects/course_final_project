@@ -3,7 +3,7 @@
         <div class="content-left t-center black">
             <article class="book-large">
                 <section class="book-large-data clear">
-                    <img src="/<?= $book->element_pic === 'no image' ? 'img/uploads/large/dummy_pic_l.jpg' : $book->element_pic ?>" alt="Einband groß">
+                    <img src="/<?= $book->element_pic === 'no image' ? 'img/uploads/large/dummy_pic_l.jpg' : $book->element_pic ?>" alt="Einband groß" width="250" height="350">
                     <h3><?= e($book->element_title) ?></h3>
                     <h4>von : <?= e($book->element_author) ?></h4>
                     <p>Beschreibung : <br><?= e($book->element_description) ?></p>

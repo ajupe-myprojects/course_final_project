@@ -37,4 +37,27 @@ class UserRepository extends AbstractRepository
         $qry = $this->pdo->prepare("INSERT INTO `$table` (`email`, `username`, `password`, `user_role`) VALUES (:email, :username, :pw, :rol)");
         $qry->execute(['email' => $mail, 'username' => $username, 'pw' => $pass, 'rol' => 1]);
     }
+
+    public function verifyEmail($mail)
+    {
+        $table = $this->getTableName();
+        $model = $this->getModelName();
+
+        if($mail !== '!ERROR!'){
+
+            $qry = $this->pdo->query("SELECT * FROM `$table` WHERE $table.email = '$mail'");
+            $verify = $qry->fetchAll(PDO::FETCH_CLASS, $model);
+            return $verify;
+        }else{
+            return [];
+        }
+    }
+
+    public function changePass($mail,$pass)
+    {
+        $table = $this->getTableName();
+        $pass = password_hash($pass, PASSWORD_DEFAULT);
+        $qry = $this->pdo->prepare("UPDATE `$table` SET `password`= ? WHERE `email`= ?");
+        $qry->execute([$pass, $mail]);
+    }
 }

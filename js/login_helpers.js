@@ -5,6 +5,7 @@
         //forms
         var lg_form = document.getElementById('login');
         var sp_form = document.getElementById('signup');
+        var np_form = document.getElementById('send-new-pw');
 
         //inputs login
         var lg_email = document.getElementById('lg-email');
@@ -12,6 +13,8 @@
         //inputs signup
         var sp_email = document.getElementById('sp-email');
         var sp_username = document.getElementById('sp-username');
+        //inputs-sendpw
+        var np_email = document.getElementById('rg-email');
 
         //notices (span)
         var notices = document.getElementsByClassName('ital-red');
@@ -75,6 +78,24 @@
                 }
             });
             
+        }
+
+        if(!!np_form){
+            np_form.addEventListener('submit', function(e){
+
+                var mail = np_email.value.trim();
+                var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+                if(mail !== '' && mail.match(pattern)){
+                    np_email.classList.remove('error')
+                    notices[4].innerText = '';
+                }else{
+                    np_email.classList.add('error');
+                    notices[4].innerText = 'Bitte eine valide Email eintragen!';
+                }
+                if(document.getElementsByClassName('error').length !== 0){
+                    e.preventDefault();
+                }
+            });
         }
     });
 }(window, document));

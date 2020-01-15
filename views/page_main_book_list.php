@@ -13,7 +13,7 @@
                 <div class="formfield">
                     <h3 class="t-center orange-text">Neues Buch einfügen:</h3>
                 </div>
-                <form action="./new-book" method="post" enctype="multipart/form-data" id="new-book-form">
+                <form action="./new-book" method="post" enctype="multipart/form-data" id="new-element-form">
                     <div class="formfield">
                         <label for="booktitle">Buchtitel: <span class="ital-red">*</span></label>
                         <input type="text" name="booktitle" id="booktitle" class="" required>
@@ -30,15 +30,13 @@
                         <label for="genre">Bitte wählen sie das Genre aus: <span class="ital-red">*</span></label>
                         <select name="genre" id="genre" required>
                             <option disabled selected value="">---</option>
-                            <optgroup>
-                                <option>Science Fiction</option>
-                                <option>Fantasy</option>
-                                <option>Misc</option>
-                            </optgroup>
+                            <option>Science Fiction</option>
+                            <option>Fantasy</option>
+                            <option>Misc</option>
                         </select>
                     </div>
                     <div class="formfield">
-                        <label for="upload-pic">Bild vom Bucheinband hochladen (optional):</label>
+                        <label for="upload-pic">Bild vom Bucheinband hochladen: .jpeg oder .png (optional):</label>
                         <input type="file" name="upload-pic" id="upload-pic" accept=".jpg, .jpeg, .png">
                     </div>
                     <div class="formfield">
@@ -55,7 +53,7 @@
             <ul class="book-prev">
             <?php foreach($booklist as $book) :?>
                 <li>
-                    <img src="/<?= $book->element_thumb === 'no image' ? 'img/uploads/small/dummy_pic_s.jpg' : $book->element_thumb ?>" alt="Einbandbild">
+                    <img src="/<?= $book->element_thumb === 'no image' ? 'img/uploads/small/dummy_pic_s.jpg' : $book->element_thumb ?>" alt="Einbandbild" width="72" height="110">
                     <div class="clear">
                         <div class="book-title">
                             <h3><?= e($book->element_title) ?></h3>

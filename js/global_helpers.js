@@ -104,6 +104,11 @@
                         document.getElementsByClassName('form-container')[0].classList.add('hide');
                         document.getElementsByClassName('formfield-center')[0].classList.add('hide');
                         break;
+                    case 'Neues Passwort':
+                        document.getElementsByClassName('form-container')[2].classList.remove('hide');
+                        document.getElementsByClassName('form-container')[0].classList.add('hide');
+                        document.getElementsByClassName('formfield-center')[0].classList.add('hide');
+                        break;
                     case 'Abbruch':
                         e.preventDefault();
                         location.replace("./");

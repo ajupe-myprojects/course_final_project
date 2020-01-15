@@ -75,4 +75,21 @@ class Mailer
             return $contents;
         }
     }
+
+    public function sendNewpass($mail)
+    {
+        $pw = $this->generatePassword();
+        if($mail !== '!ERROR!'){
+
+            $mail_body = [
+                'email' => $mail,
+                'subject' => 'Ihr neues Passwort!',
+                'message' => 'Ihr neues Passwort ist: '. $pw . ' /n Sie können es nach dem ersten Login ändern.',
+                'headers' => 'from: noreply@bookclub.to'
+            ];
+            mb_language('German');
+            mb_send_mail($mail_body['email'], $mail_body['subject'], $mail_body['message'], $mail_body['headers']);
+            return $pw;
+        }
+    }
 }

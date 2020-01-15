@@ -52,6 +52,18 @@
                     
                 </div>
             </div>
+            <div class="form-container hide">
+                <form action="./regen-email" method="post" id="send-new-pw">
+                    <div class="formfield">
+                        <label for="rg-email">Email: <span class="ital-red">*</span></label>
+                        <input type="email" name="rg-email" id="rg-email" required>
+                    </div>
+                    <div class="formfield">
+                        <input type="submit" value="New password" class="form-button">
+                        <button class="form-button">Abbruch</button>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="content-right t-center black white-text">
             <h3 class="mbott-60">Community / News</h3>
