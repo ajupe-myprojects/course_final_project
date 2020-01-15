@@ -27,7 +27,7 @@
 
                 var title = rv_title.value.trim();
                 var text = rv_text.value.trim();
-                var text_test = /^[_A-z0-9,.!?\n\s()ÜÖÄüöäß-]*$/;
+                var text_test = /^[_A-z0-9,.!?:\n\s()ÜÖÄüöäß-]*$/;
 
                 if(title !== '' && title.match(text_test)){
                     rv_title.classList.remove('error')
@@ -58,7 +58,7 @@
                 var isbn = el_isbn.value.trim();
                 var genre = el_genre.value;
                 var description = el_description.value.trim();
-                var text_test = /^[_A-z0-9,.!?\n\s()ÜÖÄüöäß-]*$/;
+                var text_test = /^[_A-z0-9,.!?:\n\s()ÜÖÄüöäß-]*$/;
                 var num_test = /^[0-9]{3}(-)[0-9]*$/;
 
                 if(title !== '' && title.match(text_test)){

@@ -24,7 +24,7 @@
                 var message = ct_msg.value.trim();
                 var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
                 var char_test = /^[_A-z]*$/;
-                var text_test = /^[_A-z0-9,.!?\n\s()ÜÖÄüöäß-]*$/;
+                var text_test = /^[_A-z0-9,.!?:\n\s()ÜÖÄüöäß-]*$/;
 
                 if(mail !== '' && mail.match(pattern)){
                     ct_email.classList.remove('error')

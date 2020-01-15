@@ -69,7 +69,7 @@
                 var notic = com_form.getElementsByClassName('ital-red');
                 var title = com_title.value.trim();
                 var text = com_text.value.trim();
-                var text_test = /^[_A-z0-9,.!?\n\s()ÜÖÄüöäß-]*$/;
+                var text_test = /^[_A-z0-9,.!?:\n\s()ÜÖÄüöäß-]*$/;
                 if(title !== '' && title.match(text_test)){
                     com_title.classList.remove('error')
                     notic[0].innerText = '';

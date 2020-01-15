@@ -64,7 +64,7 @@ class ElementController extends AbstractController
         $isbn = $val->checkISBN('isbn-number');
         $genre = $val->checkText('genre');
         $desc = $val->checkText('description');
-        $arr_img =$val->imgCheck('upload-pic');
+        $arr_img =$val->imgCheck('upload-pic', $title);
 
         $this->elementRepository->addNewElement($title, $author, $isbn, $genre, $desc, $arr_img);
         header('Location: start');

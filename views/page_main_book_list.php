@@ -39,7 +39,7 @@
                     </div>
                     <div class="formfield">
                         <label for="upload-pic">Bild vom Bucheinband hochladen (optional):</label>
-                        <input type="file" name="upload-pic" id="upload-pic">
+                        <input type="file" name="upload-pic" id="upload-pic" accept=".jpg, .jpeg, .png">
                     </div>
                     <div class="formfield">
                         <label for="description">Kurzbeschreibung des Buches: <span class="ital-red">*</span></label>
