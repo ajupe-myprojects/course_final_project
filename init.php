@@ -93,6 +93,10 @@ $routes = [
     '/delete-comment' => [
         'controller' => 'elementController',
         'method' => 'killComment'
+    ],
+    '/change-pass' => [
+        'controller' => 'loginController',
+        'method' => 'changePass'
     ]
 ];
 

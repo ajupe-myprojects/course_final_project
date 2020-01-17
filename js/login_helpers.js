@@ -6,6 +6,8 @@
         var lg_form = document.getElementById('login');
         var sp_form = document.getElementById('signup');
         var np_form = document.getElementById('send-new-pw');
+        var cp_form = document.getElementById('change-pass');
+
 
         //inputs login
         var lg_email = document.getElementById('lg-email');
@@ -15,9 +17,63 @@
         var sp_username = document.getElementById('sp-username');
         //inputs-sendpw
         var np_email = document.getElementById('rg-email');
+        //inputs-changepw
+        var cp_oldpw = document.getElementById('old-pw');
+        var cp_newpw = document.getElementById('new-pw');
+        var cp_verpw = document.getElementById('verify-pw');
 
         //notices (span)
         var notices = document.getElementsByClassName('ital-red');
+
+        //functions
+
+        function  passwordChange()
+        {
+            var omail = cp_oldpw.value.trim();
+            var nmail = cp_newpw.value.trim();
+            var vmail = cp_verpw.value.trim();
+            var text_test = /^[_A-z0-9!?:ÜÖÄüöäß-]*$/;
+            if(omail !== '' && omail.match(text_test)){
+                cp_oldpw.classList.remove('error')
+                notices[0].innerText = '';
+            }else{
+                cp_oldpw.classList.add('error');
+                notices[0].innerText = 'Bitte ein valides Passwort eintragen!';
+            }
+            if(nmail !== '' && nmail.match(text_test)){
+                cp_newpw.classList.remove('error')
+                notices[1].innerText = '';
+            }else{
+                cp_newpw.classList.add('error');
+                notices[1].innerText = 'Bitte ein valides Passwort eintragen!';
+            }
+            if(vmail !== '' && vmail.match(text_test)){
+                cp_verpw.classList.remove('error')
+                notices[2].innerText = '';
+            }else{
+                cp_verpw.classList.add('error');
+                notices[2].innerText = 'Bitte ein valides Passwort eintragen!';
+            }
+        }
+
+        function newPwVerify()
+        {
+            var nmail = cp_newpw.value.trim();
+            
+            var text_test = /^[_A-z0-9!?:ÜÖÄüöäß-]*$/;
+            if(nmail !== '' && nmail.match(text_test)){
+                if(nmail === document.getElementById('verify-pw').value.trim()){
+                    cp_verpw.classList.remove('error')
+                    notices[2].innerText = '';
+                }else{
+                    cp_verpw.classList.add('error');
+                    notices[2].innerText = 'Passwörter stimmen nicht überein!';
+                }
+            }else{
+                cp_verpw.classList.add('error');
+                notices[2].innerText = 'Bitte tragen sie das erste Passwort ein';
+            }
+        }
 
         //// event listeners
         if(!!lg_form){
@@ -96,6 +152,26 @@
                     e.preventDefault();
                 }
             });
+        }
+
+        if(!!cp_form){
+
+            cp_form.addEventListener('submit', function(e){
+
+                passwordChange();
+
+                if(document.getElementsByClassName('error').length !== 0){
+                    e.preventDefault();
+                }
+
+            });
+            
+            cp_verpw.addEventListener('keyup', function(e){
+                
+                newPwVerify();
+
+            });
+
         }
     });
 }(window, document));

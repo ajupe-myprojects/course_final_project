@@ -16,7 +16,7 @@
                     </div>
                     <div class="formfield">
                         <input type="submit" value="Login" class="form-button">
-                        <button class="form-button">Abbruch</button>
+                        <button class="form-button" data-target="/login">Abbruch</button>
                     </div>
                 </form>
                 <div class="form-sidebox">
@@ -44,7 +44,7 @@
                     </div>
                     <div class="formfield">
                         <input type="submit" value="Sign up" class="form-button">
-                        <button class="form-button">Abbruch</button>
+                        <button class="form-button" data-target="/login">Abbruch</button>
                     </div>
                 </form>
                 <div class="form-sidebox">
@@ -60,7 +60,7 @@
                     </div>
                     <div class="formfield">
                         <input type="submit" value="New password" class="form-button">
-                        <button class="form-button">Abbruch</button>
+                        <button class="form-button" data-target="/login">Abbruch</button>
                     </div>
                 </form>
             </div>

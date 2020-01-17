@@ -53,12 +53,38 @@ class UserRepository extends AbstractRepository
         }
     }
 
+    public function verifyPassword($pw)
+    {
+        $table = $this->getTableName();
+        $model = $this->getModelName();
+        $uid = $_SESSION['login']['uid'];
+        if($pw !== '!ERROR!'){
+            $qry = $this->pdo->prepare("SELECT * FROM `$table` WHERE $table.uid = ?");
+            $qry->execute([$uid]);
+            $qry->setFetchMode(PDO::FETCH_CLASS, $model);
+            $user = $qry->fetch(PDO::FETCH_CLASS);
+            if(password_verify($pw, $user->password)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public function changePass($mail,$pass)
     {
         $table = $this->getTableName();
         $pass = password_hash($pass, PASSWORD_DEFAULT);
         $qry = $this->pdo->prepare("UPDATE `$table` SET `password`= ? WHERE `email`= ?");
         $qry->execute([$pass, $mail]);
+    }
+
+    public function updatePassword($pw)
+    {
+        $table = $this->getTableName();
+        $uid = $_SESSION['login']['uid'];
+        $pass = password_hash($pw, PASSWORD_DEFAULT);
+        $qry = $this->pdo->prepare("UPDATE `$table` SET `password`= ? WHERE `uid`= ?");
+        $qry->execute([$pass, $uid]);
     }
 
     //Ajax goodies

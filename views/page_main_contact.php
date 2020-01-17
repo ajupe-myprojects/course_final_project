@@ -32,7 +32,7 @@
                     </div>
                     <div class="formfield">
                         <input type="submit" value="Abschicken" class="form-button">
-                        <button class="form-button">Abbruch</button>
+                        <button class="form-button" data-target="/start">Abbruch</button>
                     </div>
                 </form>
             </div>

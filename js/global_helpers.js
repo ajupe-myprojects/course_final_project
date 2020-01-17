@@ -152,7 +152,8 @@
                         break;
                     case 'Abbruch':
                         e.preventDefault();
-                        location.replace("./");
+                        var target = e.target.getAttribute('data-target');
+                        location.replace("." + target);
                         break;
                     case 'Schließen':
                         e.preventDefault();
@@ -163,6 +164,10 @@
                         break;
                     case 'Zur Liste' :
                         location.replace("./start");
+                        break;
+                    case 'Passwort ändern':
+                        document.getElementById('change-pass').classList.remove('hide');
+                        e.target.classList.add('hide');
                         break;
                     case 'Kontakt-Form' :
                         location.replace("./contact");

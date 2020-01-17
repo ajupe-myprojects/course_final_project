@@ -116,6 +116,31 @@ class LoginController extends AbstractController
         }
     }
 
+    public function changePass()
+    {
+        $message = [];
+        $val = new Validator();
+        $oldpw = $val->checkText('old-pw');
+        $newpw = $val->checkText('new-pw');
+        $verify = $this->userRepository->verifyPassword($oldpw);
+        if($oldpw !== '!ERROR!' && $newpw !== '!ERROR!'){
+            if($verify){
+                $this->userRepository->updatePassword($newpw);
+                $message['msg'] = 'Ihr Passwort wurde erfolgreich geändert.';
+                $message['state'] = 'cont-success';
+                $this->render('page_main_login_error', ['message' => $message]);
+            }else{
+                $message['msg'] = 'Bei der Übermittlung ihrer Anfrage sind Fehler aufgetreten!<br>Ihr altes Passwort war nicht korrekt';
+                $message['state'] = 'cont-err';
+                $this->render('page_main_login_error', ['message' => $message]);
+            }
+        }else{
+            $message['msg'] = 'Bei der Übermittlung ihrer Anfrage sind Fehler aufgetreten!<br>Bitte versuchen sie es erneut!';
+            $message['state'] = 'cont-err';
+            $this->render('page_main_login_error', ['message' => $message]);
+        }
+    }
+
     //AJAX Goodies
     public function getUserList()
     {
