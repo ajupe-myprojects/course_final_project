@@ -46,4 +46,20 @@ class ElementRepository extends AbstractRepository
         $qry = $this->pdo->prepare("INSERT INTO `$table` (`element_title`, `element_author`, `element_isbn`, `element_genre`, `element_description`, `element_pic`, `element_thumb`, `user_uid`) VALUES (:title, :author, :isbn, :genre, :descript, :pic, :thumb, :usid)");
         $qry->execute(['title' => $title, 'author' => $author, 'isbn' => $isbn, 'genre' => $genre, 'descript' => $desc, 'pic' => $pic, 'thumb' => $thumb, 'usid' => $uid]);
     }
+
+    public function removeElement($id)
+    {
+        $table = $this->getTableName();
+        $this->pdo->query("DELETE FROM `$table` WHERE id = $id");
+    }
+
+    public function getAllElementsByUser()
+    {
+        $table = $this->getTableName();
+        $model = $this->getModelName();
+        $uid = $_SESSION['login']['uid'];
+        $qry = $this->pdo->query("SELECT * FROM `$table` WHERE user_uid = $uid");
+        $elements = $qry->fetchAll(PDO::FETCH_CLASS, $model);
+        return json_encode($elements);
+    }
 }

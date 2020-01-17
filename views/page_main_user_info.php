@@ -4,7 +4,7 @@
             <div class="t-left">
                 <h3> Benutzer: <?= $_SESSION['login']['username'] ?></h3>
                 <p>Email : <?= $_SESSION['login']['email'] ?></p>
-                <p>Selbstbeschreibung : <?= $_SESSION['login']['user-description'] ?? 'nicht vorhanden' ?></p>
+                <p>Selbstbeschreibung : <?= $_SESSION['login']['user_description'] ?? 'nicht vorhanden' ?></p>
                 <p>Registriert am: <?= fixDate($_SESSION['login']['user_created_at']) ?></p>
                 <p>Nutzerrechte : <?= $_SESSION['login']['user_role'] === 23 ? 'admin' : 'regular' ?></p>
             </div>

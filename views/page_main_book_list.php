@@ -67,6 +67,9 @@
                     </div>
                     <p class="book-description"><?= e(substr($book->element_description, 0, 220)) . '<span class="remark">...mehr</span>' ?></p>
                     <a href="./book-single?id=<?= $book->id?>"></a>
+                    <?php if(!empty($_SESSION['login']) && $_SESSION['login']['user_role'] === 23) : ?>
+                        <button class="form-button" data-element-id="<?= $book->id ?>">Delete</button>
+                    <?php endif; ?>
                 </li>
             <?php endforeach; ?>
             </ul>

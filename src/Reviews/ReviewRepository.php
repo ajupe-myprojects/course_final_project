@@ -33,4 +33,19 @@ class ReviewRepository extends AbstractRepository
         $qry = $this->pdo->prepare("INSERT INTO `$table` (`rev_title`, `rev_text`, `rev_element_id`, `rev_user_uid`) VALUES (:title, :rtext, :id, :usid)");
         $qry->execute(['title' => $title, 'rtext' => $text, 'id' => $id, 'usid' => $user_id]);
     }
+
+    //admin stuff
+    public function removeAssocRevs($id)
+    {
+        $table = $this->getTableName();
+        $this->pdo->query("DELETE FROM `$table` WHERE rev_element_id = $id");
+    }
+
+    public function removeReview($id)
+    {
+        $table = $this->getTableName();
+        $this->pdo->query("DELETE FROM `$table` WHERE rid = $id");
+    }
+
+    //end admin stuff
 }

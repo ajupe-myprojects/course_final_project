@@ -34,4 +34,22 @@ class CommentRepository extends AbstractRepository
         $qry = $this->pdo->prepare("INSERT INTO `$table` (`comment_title`, `comment_text`, `comment_rev_rid`, `comment_el_id`, `comment_user_uid`) VALUES (:title, :ctext, :revrid, :elid, :usid)");
         $qry->execute(['title' => $title, 'ctext' => $text, 'revrid' => $rev_id, 'elid' => $ele_id, 'usid' => $user_id]);
     }
+
+    //admin stuff
+    public function removeAssocComms($id, $strg)
+    {
+        $table = $this->getTableName();
+        if($strg === 'book'){
+            $this->pdo->query("DELETE FROM `$table` WHERE comment_el_id = $id");
+        }else{
+            $this->pdo->query("DELETE FROM `$table` WHERE comment_rev_rid = $id");
+        }
+    }
+
+    public function removeComment($id)
+    {
+        $table = $this->getTableName();
+        $this->pdo->query("DELETE FROM `$table` WHERE cid = $id");
+    }
+    //end admin stuff
 }

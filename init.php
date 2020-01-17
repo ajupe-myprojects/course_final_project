@@ -1,10 +1,11 @@
 <?php
-
-//use App\Core\Container;
-
+// autoloader for including all classes automatically (this one is just copied from: https://www.php-fig.org/psr/psr-4/examples/)
 require __DIR__.'/autoload.php';
 //session_set_cookie_params(4000);
 if(session_status() === PHP_SESSION_NONE) session_start();
+
+//Building the container for database access
+$container = new App\Core\Container();
 
 //+++++++++++++++++++ Global Functions +++++++++++++++++++++++//
 
@@ -20,6 +21,23 @@ function fixDate($string)
     return date('d.m.Y', $timestamp);
 }
 
+
+//++++++++++++++++++++ AJAX Handling ++++++++++++++++++++++++//
+
+function getController($strg, $container)
+{
+    return $container->create($strg);
+}
+
+//testkram
+if(isset($_REQUEST['user-list'])){
+    $controller = getController('loginController', $container);
+    echo $controller->getUserList();
+}
+if(isset($_REQUEST['elements-list'])){
+    $controller = getController('elementController', $container);
+    echo $controller->getElementList();
+}
 
 //+++++++++++++++++++ Routing Tables +++++++++++++++++++++++//
 
@@ -63,6 +81,18 @@ $routes = [
     '/regen-email' => [
         'controller' => 'loginController',
         'method' => 'regeneratePassword'
+    ],
+    '/delete-element' => [
+        'controller' => 'elementController',
+        'method' => 'killElement'
+    ],
+    '/delete-review' => [
+        'controller' => 'elementController',
+        'method' => 'killReview'
+    ],
+    '/delete-comment' => [
+        'controller' => 'elementController',
+        'method' => 'killComment'
     ]
 ];
 
@@ -72,9 +102,4 @@ $links = [
     '/impressum' => '/views/page_main_impressum.php',
     '/daten' => '/views/page_main_daten.php',
     '/contact' => '/views/page_main_contact.php',
-    '/signup-error' => '/views/page_main_login_error.php'
-
 ];
-
-//Building the container for database access
-$container = new App\Core\Container();

@@ -48,6 +48,9 @@
                                 <span class="book-userdate"> von : <?= e($rev->username) ?></span>
                              </div>
                             <p class="clearfix"><?= e($rev->rev_text) ?></p>
+                            <?php if(!empty($_SESSION['login']) && $_SESSION['login']['user_role'] === 23) : ?>
+                                <button class="form-button" data-element-id="<?= $book->id ?>" data-review-id="<?= $rev->rid ?>">Delete Review</button>
+                            <?php endif; ?>
                             <?php if(!empty($_SESSION['login'])) :?>
                                 <button class="hide-butt mbott-15" data-rev-id="<?= $rev->rid ?>" data-el-id="<?= $book->id ?>">Kommentar schreiben</button>
                             <?php endif; ?>
@@ -62,6 +65,9 @@
                                                 <span class="book-userdate"> von : <?= e($comment->username) ?></span>
                                             </div>
                                             <p class="clearfix"><?= e($comment->comment_text) ?></p>
+                                            <?php if(!empty($_SESSION['login']) && $_SESSION['login']['user_role'] === 23) : ?>
+                                                <button class="form-button" data-element-id="<?= $book->id ?>" data-comment-id="<?= $comment->cid ?>">Delete Comment</button>
+                                            <?php endif; ?>
                                         </div>
                                     <?php endif; ?>
                                 <?php endforeach; ?>

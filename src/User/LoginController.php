@@ -115,4 +115,10 @@ class LoginController extends AbstractController
             $this->render('page_main_login_error', ['message' => $message]);
         }
     }
+
+    //AJAX Goodies
+    public function getUserList()
+    {
+        return $this->userRepository->getAllUsers();
+    }
 }

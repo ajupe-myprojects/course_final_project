@@ -7,8 +7,49 @@
 
 
 
-        //functions 
+        //functions
+        //++++++++++++++++ AJAX stuff(admin) +++++++++++++++++++++(not yet implemented)//
+        function buildUserList(obj)
+        {
+            var list = document.getElementById('userlist');
+            var table = document.createElement('TABLE');
+            for (var i = 0; i < obj.length; i++){
+                var tr = document.createElement('TR');
+                var td1 = document.createElement('TD')
+                td1.innerText = obj[i].username;
+                tr.append(td1);
+                var td2 = document.createElement('TD')
+                td2.innerText = obj[i].email;
+                tr.append(td2);
+                var td3 = document.createElement('TD')
+                td3.innerText = obj[i].user_created_at;
+                tr.append(td3);
+                table.append(tr);
+            }
+            list.append(table);
+        }
 
+        function getList(strg)
+        {
+            var xhtm = new XMLHttpRequest();
+            xhtm.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var response = this.responseText;
+                    console.log(response);
+                    if (strg === 'user-list') {
+                        
+                        buildUserList(JSON.parse(response));
+                    }
+                    if (strg === 'elements-list') {
+                        
+                        document.getElementById('elementlist').innerText = 'Bücher eingetragen : ' + JSON.parse(response).length;
+                    }
+                }
+            }
+            xhtm.open("GET", "../init.php?"+ strg + "=1", true);
+            xhtm.send(); 
+        }
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
         // crazy stuff !!! don't try this at home kids!!! (Kommentarform)
 
@@ -146,6 +187,35 @@
                     case 'Kommentar abbrechen' :
                         e.preventDefault();
                         location.reload();
+                        break;
+                    case 'Delete':
+                        var id = e.target.getAttribute('data-element-id');
+                        if(confirm('Sind sie 250% sicher?')){
+
+                            location.replace("./delete-element?id=" + id);
+                        }else{
+                            location.reload();
+                        }
+                        break;
+                    case 'Delete Review':
+                        var id = e.target.getAttribute('data-review-id');
+                        var elid = e.target.getAttribute('data-element-id');
+                        if(confirm('Sind sie 250% sicher?')){
+
+                            location.replace("./delete-review?id=" + id + '&elid=' + elid);
+                        }else{
+                            location.reload();
+                        }
+                        break;
+                    case 'Delete Comment':
+                        var id = e.target.getAttribute('data-comment-id');
+                        var elid = e.target.getAttribute('data-element-id');
+                        if(confirm('Sind sie 250% sicher?')){
+
+                            location.replace("./delete-comment?id=" + id + '&elid=' + elid);
+                        }else{
+                            location.reload();
+                        }
                         break;
                 }
             }

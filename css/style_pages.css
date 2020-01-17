@@ -154,11 +154,20 @@
 .book-prev li a:hover{
     background-color: #19a8a440;
 }
-
+.book-prev li button{
+    clear:both;
+    float:right;
+}
 .book-prev li img{
     float: left;
 }
-
+.book-prev h3{
+    font-size: 16px;
+    color: #1ab3ad;
+}
+.book-prev h4{
+    font-size: 14px;
+}
 .book-prev li div{
     float: left;
     margin-left: 10px;

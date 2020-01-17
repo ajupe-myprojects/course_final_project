@@ -60,4 +60,14 @@ class UserRepository extends AbstractRepository
         $qry = $this->pdo->prepare("UPDATE `$table` SET `password`= ? WHERE `email`= ?");
         $qry->execute([$pass, $mail]);
     }
+
+    //Ajax goodies
+    public function getAllUsers()
+    {
+        $table = $this->getTableName();
+        $model = $this->getModelName();
+        $qry = $this->pdo->query("SELECT * FROM `$table`");
+        $users = $qry->fetchAll(PDO::FETCH_CLASS, $model);
+        return json_encode($users);
+    }
 }

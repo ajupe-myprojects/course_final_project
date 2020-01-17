@@ -71,4 +71,43 @@ class ElementController extends AbstractController
 
     }
 
+    public function killElement()
+    {
+        $forms = new FormHelper();
+        $requests = $forms->getRequests();
+        $id = $requests['id'];
+        $this->commentRepository->removeAssocComms($id,'book');
+        $this->reviewRepository->removeAssocRevs($id);
+        $this->elementRepository->removeElement($id);
+        header('Location: start');
+    }
+
+    public function killReview()
+    {
+        $forms = new FormHelper();
+        $requests = $forms->getRequests();
+        $id = $requests['id'];
+        $ele_id = $requests['elid'];
+        $this->commentRepository->removeAssocComms($id,'review');
+        $this->reviewRepository->removeReview($id);
+        header('Location: book-single?id='.$ele_id);
+    }
+
+    public function killComment()
+    {
+        $forms = new FormHelper();
+        $requests = $forms->getRequests();
+        $id = $requests['id'];
+        $ele_id = $requests['elid'];
+        $this->commentRepository->removeComment($id);
+        header('Location: book-single?id='.$ele_id);
+    }
+
+
+    //ajax
+    public function getElementList()
+    {
+        return $this->elementRepository->getAllElementsByUser();
+    }
+
 }
