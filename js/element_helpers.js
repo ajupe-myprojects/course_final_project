@@ -61,16 +61,22 @@
                 var text_test = /^[_A-z0-9,.!?:\n\s()ÜÖÄüöäß-]*$/;
                 var num_test = /^[0-9]{3}(-)[0-9]*$/;
 
-                if(title !== '' && title.match(text_test)){
+                if(title !== '' && title.match(text_test)&& title.length < 25){
                     el_title.classList.remove('error')
                     notices[0].innerText = '';
+                }else if(title !== '' && title.match(text_test) && title.length > 25){
+                    el_title.classList.add('error')
+                    notices[0].innerText = 'Nicht länger als 25 Buchstaben';
                 }else{
                     el_title.classList.add('error')
                     notices[0].innerText = 'Bitte einen Titel angeben!';
                 }
-                if(author !== '' && author.match(text_test)){
+                if(author !== '' && author.match(text_test) && title.length < 25){
                     el_author.classList.remove('error')
                     notices[1].innerText = '';
+                }else if(author !== '' && author.match(text_test) && title.length < 25){
+                    el_author.classList.add('error')
+                    notices[1].innerText = 'Nicht länger als 25 Buchstaben';
                 }else{
                     el_author.classList.add('error')
                     notices[1].innerText = 'Bitte den Autor angeben!';

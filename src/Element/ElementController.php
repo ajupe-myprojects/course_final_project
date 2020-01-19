@@ -37,7 +37,7 @@ class ElementController extends AbstractController
     public function addReview()
     {
         $val = new Validator();
-        $title = $val->checkText('review-title');
+        $title = $val->checkTextLim('review-title');
         $text = $val->checkText('review-text');
         $id = $val->checkText('book-id');
         $user_id = $_SESSION['login']['uid'];
@@ -47,7 +47,7 @@ class ElementController extends AbstractController
     public function addComment()
     {
         $val = new Validator();
-        $title = $val->checkText('comm-title');
+        $title = $val->checkTextLim('comm-title');
         $text = $val->checkText('comm-text');
         $ele_id = $val->checkText('el-id');
         $rev_id = $val->checkText('rev-id');
@@ -59,8 +59,8 @@ class ElementController extends AbstractController
     public function addElement()
     {
         $val = new Validator();
-        $title = $val->checkText('booktitle');
-        $author = $val->checkText('bookauthor');
+        $title = $val->checkTextLim('booktitle');
+        $author = $val->checkTextLim('bookauthor');
         $isbn = $val->checkISBN('isbn-number');
         $genre = $val->checkText('genre');
         $desc = $val->checkText('description');

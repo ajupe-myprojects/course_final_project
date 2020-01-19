@@ -64,6 +64,16 @@ class Validator
             return '!ERROR!';
         }
     }
+    public function checkTextLim($strg)
+    {
+        $requests = $this->getFormData();
+        if(isset($requests[$strg]) && !empty($requests[$strg]) && preg_match('/^[_A-z0-9,.!?:\n\s()ÜÖÄüöäß-]{0,25}$/', $requests[$strg])){
+            return $requests[$strg];
+        }else{
+            return '!ERROR!';
+        }
+    }
+
 
     public function checkOpt($strg)
     {

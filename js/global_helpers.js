@@ -5,7 +5,7 @@
         
         var main = document.getElementsByTagName('main')[0];
 
-
+        var burger = document.getElementsByClassName('burger-menu')[0];
 
         //functions
         //++++++++++++++++ AJAX stuff(admin) +++++++++++++++++++++(not yet implemented)//
@@ -48,6 +48,10 @@
             }
             xhtm.open("GET", "../init.php?"+ strg + "=1", true);
             xhtm.send(); 
+        }
+
+        if(window.innerWidth < 921){
+            document.getElementsByClassName('nav-bar')[0].classList.add('hide');
         }
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
@@ -224,6 +228,23 @@
                         break;
                 }
             }
+        });
+
+        window.addEventListener('resize', function(){
+            if(window.innerWidth < 921){
+                document.getElementsByClassName('nav-bar')[0].classList.add('hide');
+            }else{
+                document.getElementsByClassName('nav-bar')[0].classList.remove('hide');
+            }
+        });
+
+        burger.addEventListener('click', function(e){
+            if(document.getElementsByClassName('nav-bar')[0].classList.contains('hide')){
+                document.getElementsByClassName('nav-bar')[0].classList.remove('hide');
+            }else{
+                document.getElementsByClassName('nav-bar')[0].classList.add('hide');
+            }
+            
         });
 
     });

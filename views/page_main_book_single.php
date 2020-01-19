@@ -85,7 +85,6 @@
                 <li>Stuff2</li>
                 <li>Stuff3</li>
                 <li>Stuff4</li>
-                <li>Stuff5</li>
             </ul>
             <div class="sell-out">
                 Werbung

@@ -6,6 +6,7 @@
     width: 100%;
     height: 42px;
     border-bottom: 2px solid #0B5351;
+    z-index:50;
 }
 .nav-container{
     width:85%;
@@ -55,6 +56,20 @@
     text-decoration: underline;
 }
 
+.burger-menu{
+    float:right;
+    background: url('/img/ui/burger_button.png') no-repeat top left;
+    background-size: contain;
+    width:40px;
+    height: 40px;
+    border: none;
+    display:none;
+}
+.burger-menu:hover,.burger-menu:focus{
+    background-image: url(/img/ui/burger_button_hover.png);
+
+}
+
 /* main welcome */
 .content-main{
     margin-top:42px;
@@ -96,6 +111,34 @@
     background: url('../img/ui/anzeige_fake.jpg') no-repeat top left;
 }
 
+#welcome{
+    background-image: url('../img/ui/bg_main.jpg');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    height:700px;
+    padding-top: 200px;
+}
+
+#welcome h2{
+    
+    color: #f15025;
+    font-size: 28px;
+    background-color: #191919;
+    min-height:34px;
+    border-top: 1px solid #f15025;
+    border-bottom: 1px solid #f15025;
+}
+
+#welcome p{
+    padding-top: 100px;
+    color: #eef0f2;
+    font-weight: bold;
+}
+
+#welcome a{
+    text-decoration: none;
+    color: #f15025;
+}
 /* main book list */
 
 .sort-bar{
@@ -263,7 +306,7 @@
     border-bottom: 2px solid #f15025;
     padding-top:15px;
     padding-bottom: 15px;
-    width: 98%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 15px;

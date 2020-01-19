@@ -65,7 +65,7 @@
                             <span class="book-userdate">Erstellt : <?= fixDate($book->element_created_at) ?> von : <?= $book->username ?></span>
                         </p>
                     </div>
-                    <p class="book-description"><?= e(substr($book->element_description, 0, 220)) . '<span class="remark">...mehr</span>' ?></p>
+                    <p class="book-description"><?= e(substr($book->element_description, 0, 180)) . '<span class="remark">...mehr</span>' ?></p>
                     <a href="./book-single?id=<?= $book->id?>"></a>
                     <?php if(!empty($_SESSION['login']) && $_SESSION['login']['user_role'] === 23) : ?>
                         <button class="form-button" data-element-id="<?= $book->id ?>">Delete</button>
@@ -82,7 +82,6 @@
                 <li>Stuff2</li>
                 <li>Stuff3</li>
                 <li>Stuff4</li>
-                <li>Stuff5</li>
             </ul>
             <div class="sell-out">
                 Werbung

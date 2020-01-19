@@ -18,7 +18,10 @@ html{
 }
 
 /* basic structure */
-
+article a{
+    color: #f15025;
+    text-decoration-style: none;
+}
 .wrapper{
     width: 85%;
     margin-left: auto;
@@ -203,6 +206,7 @@ li>a{
     border: none;
     font-weight: bold;
     border-radius: 3px;
+    margin-bottom: 5px;
 }
 .form-button:hover{
     background-color: #1f7986;

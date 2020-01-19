@@ -1,0 +1,90 @@
+@media only screen and (max-width: 1200px){
+    .foot-nav{
+        width: 50%;
+    }
+    .content-right{
+        clear: both;
+        width: 100%;
+        min-height: 350px;
+    }
+
+    .sell-out{
+        height: 50px;
+        background: #092327;
+    }
+    .content-right li{
+        display: inline-block;
+        width: 24%;
+        height: 80px;
+        overflow: auto;
+    }
+    .content-left{
+        width: 100%
+    }
+    .book-prev li a{
+        width:79%;
+    }
+    /* forms */
+
+    .form-sidebox{
+        margin-left: 45%;
+        overflow: auto;
+    }
+}
+
+@media only screen and (max-width: 920px){
+    .nav-container{
+        width:96%;
+    }
+    .foot-nav{
+        width: 90%;
+    }
+    .book-description{
+        clear:both;
+        width: 90%;
+        padding: 10px;
+        border-top: 1px solid #ced0ce;
+        min-height: 111px;
+    }
+    .book-prev li a{
+        height: 232px;
+    }
+
+    /* nav */
+    .nav-bar li{
+        float: none;
+    }
+
+    .nav-bar li a{
+        width: 160px;
+    }
+    .nav-bar{
+        clear:both;
+        background: #191919;
+        outline: 1px solid #117470;
+    }
+    .burger-menu{
+        display:block;
+    }
+
+    .content-right li{
+        width: 49%;
+    }
+    .book-large-data p:nth-of-type(2){
+        clear:both;
+        float:left;
+    }
+    .rev-data{
+        clear:both;
+        float:left;
+        margin-left:7px;
+    }
+
+    .formfield,.formfield-center{
+        width: 100%;
+    }
+    .form-sidebox{
+        margin-left: 50%;
+        width:28%;
+    }
+}
